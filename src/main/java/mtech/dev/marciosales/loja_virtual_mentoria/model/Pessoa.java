@@ -12,12 +12,10 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pessoa")
     private Long id;
 
+    private String nome;
+    private String email;
+    private String telefone;
 
-
-
-
-
-
-  @ManyToMany(targetEntity = Endereco.class, cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private Endereco endereco;
 }
