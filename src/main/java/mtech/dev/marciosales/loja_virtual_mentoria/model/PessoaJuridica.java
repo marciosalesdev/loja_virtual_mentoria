@@ -1,27 +1,91 @@
 package mtech.dev.marciosales.loja_virtual_mentoria.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 
-import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "pessoa_juridica")
-@SequenceGenerator(name = "seq_pessoa_juridica", sequenceName = "seq_pessoa_juridica", allocationSize = 1,initialValue = 1)
-public class PessoaJuridica implements Serializable {
+@PrimaryKeyJoinColumn(name = "id")
+public class PessoaJuridica extends Pessoa {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pessoa_juridica")
-    private Long id;
-
-
+    @Column(nullable = false)
     private String cnpj;
+    @Column(nullable = false)
     private String incricaoEstadual;
+
     private String incricaoMunicipial;
+    @Column(nullable = false)
     private String nomeFantasia;
+
+    @Column(nullable = false)
     private String razaoSocial;
 
+    private String categoria;
 
 
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getIncricaoEstadual() {
+        return incricaoEstadual;
+    }
+
+    public void setIncricaoEstadual(String incricaoEstadual) {
+        this.incricaoEstadual = incricaoEstadual;
+    }
+
+    public String getIncricaoMunicipial() {
+        return incricaoMunicipial;
+    }
+
+    public void setIncricaoMunicipial(String incricaoMunicipial) {
+        this.incricaoMunicipial = incricaoMunicipial;
+    }
+
+    public String getNomeFantasia() {
+        return nomeFantasia;
+    }
+
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PessoaJuridica that = (PessoaJuridica) o;
+        return Objects.equals(cnpj, that.cnpj);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cnpj);
+    }
 }
