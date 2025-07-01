@@ -15,7 +15,9 @@ public class AvaliacaoProduto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_avaliacao_produto")
     private Long id;
-
+    @Column(nullable = false)
+    private Integer nota;
+    @Column(nullable = false)
     private String descricao;
 
     @ManyToOne(targetEntity = Pessoa.class)
@@ -68,5 +70,13 @@ public class AvaliacaoProduto implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    public Integer getNota() {
+        return nota;
+    }
+
+    public void setNota(Integer nota) {
+        this.nota = nota;
     }
 }

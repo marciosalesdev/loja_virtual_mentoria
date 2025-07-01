@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "acesso")
-@SequenceGenerator(name = "seq_acesso",sequenceName = "seq_name",  allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "seq_acesso",sequenceName = "seq_acesso",  allocationSize = 1, initialValue = 1)
 public class Acesso implements GrantedAuthority {
 
     private static final long serialVersionUID = 1L;
