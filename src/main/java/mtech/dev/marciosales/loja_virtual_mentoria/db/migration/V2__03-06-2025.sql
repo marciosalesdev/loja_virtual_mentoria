@@ -1,0 +1,1 @@
+alter table loja_virtual_mentoria.public.pessoa_fisica add  column tipo_pessoa character varying(255);
