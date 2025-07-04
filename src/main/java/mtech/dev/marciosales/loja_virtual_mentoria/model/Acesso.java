@@ -1,6 +1,7 @@
 package mtech.dev.marciosales.loja_virtual_mentoria.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -42,9 +43,9 @@ public class Acesso implements GrantedAuthority {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
+    @JsonIgnore
     @Override
     public String getAuthority() {
-        return "";
+        return this.descricao;
     }
 }
