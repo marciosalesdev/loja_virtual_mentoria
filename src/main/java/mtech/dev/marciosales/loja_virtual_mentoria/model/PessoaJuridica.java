@@ -4,88 +4,88 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
-
 import java.util.Objects;
 
 @Entity
-@Table(name ="pessoa_juridica")
+@Table(name = "pessoa_juridica")
 @PrimaryKeyJoinColumn(name = "id")
 public class PessoaJuridica extends Pessoa {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Column(nullable = false)
-    private String cnpj;
-    @Column(nullable = false)
-    private String incricaoEstadual;
+  @Column(nullable = false)
+  private String cnpj;
 
-    private String incricaoMunicipial;
-    @Column(nullable = false)
-    private String nomeFantasia;
+  @Column(nullable = false)
+  private String incricaoEstadual;
 
-    @Column(nullable = false)
-    private String razaoSocial;
+  private String incricaoMunicipial;
 
-    private String categoria;
+  @Column(nullable = false)
+  private String nomeFantasia;
 
+  @Column(nullable = false)
+  private String razaoSocial;
 
-    public String getCnpj() {
-        return cnpj;
-    }
+  private String categoria;
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
+  public String getCnpj() {
+    return cnpj;
+  }
 
-    public String getIncricaoEstadual() {
-        return incricaoEstadual;
-    }
+  public void setCnpj(String cnpj) {
+    this.cnpj = cnpj;
+  }
 
-    public void setIncricaoEstadual(String incricaoEstadual) {
-        this.incricaoEstadual = incricaoEstadual;
-    }
+  public String getIncricaoEstadual() {
+    return incricaoEstadual;
+  }
 
-    public String getIncricaoMunicipial() {
-        return incricaoMunicipial;
-    }
+  public void setIncricaoEstadual(String incricaoEstadual) {
+    this.incricaoEstadual = incricaoEstadual;
+  }
 
-    public void setIncricaoMunicipial(String incricaoMunicipial) {
-        this.incricaoMunicipial = incricaoMunicipial;
-    }
+  public String getIncricaoMunicipial() {
+    return incricaoMunicipial;
+  }
 
-    public String getNomeFantasia() {
-        return nomeFantasia;
-    }
+  public void setIncricaoMunicipial(String incricaoMunicipial) {
+    this.incricaoMunicipial = incricaoMunicipial;
+  }
 
-    public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
-    }
+  public String getNomeFantasia() {
+    return nomeFantasia;
+  }
 
-    public String getRazaoSocial() {
-        return razaoSocial;
-    }
+  public void setNomeFantasia(String nomeFantasia) {
+    this.nomeFantasia = nomeFantasia;
+  }
 
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
-    }
+  public String getRazaoSocial() {
+    return razaoSocial;
+  }
 
-    public String getCategoria() {
-        return categoria;
-    }
+  public void setRazaoSocial(String razaoSocial) {
+    this.razaoSocial = razaoSocial;
+  }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+  public String getCategoria() {
+    return categoria;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        PessoaJuridica that = (PessoaJuridica) o;
-        return Objects.equals(cnpj, that.cnpj);
-    }
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(cnpj);
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    PessoaJuridica that = (PessoaJuridica) o;
+    return Objects.equals(cnpj, that.cnpj);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(cnpj);
+  }
 }

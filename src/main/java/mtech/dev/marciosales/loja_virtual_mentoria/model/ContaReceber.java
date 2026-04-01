@@ -1,122 +1,134 @@
 package mtech.dev.marciosales.loja_virtual_mentoria.model;
 
-
 import jakarta.persistence.*;
-import mtech.dev.marciosales.loja_virtual_mentoria.enums.StatusContaReceber;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
+import mtech.dev.marciosales.loja_virtual_mentoria.enums.StatusContaReceber;
 
 @Entity
 @Table(name = "conta_receber")
-@SequenceGenerator(name = "seq_conta_receber",sequenceName = "seq_conta_receber")
+@SequenceGenerator(name = "seq_conta_receber", sequenceName = "seq_conta_receber")
 public class ContaReceber implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_conta_receber")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_conta_receber")
+  private Long id;
 
-    @Column(nullable = false)
-    private String descricao;
+  @Column(nullable = false)
+  private String descricao;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private StatusContaReceber status;
+  @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
+  private StatusContaReceber status;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date dtVencimennto;
+  @Column(nullable = false)
+  @Temporal(TemporalType.DATE)
+  private Date dtVencimennto;
 
-    @Temporal(TemporalType.DATE)
-    private Date dtPagamento;
+  @Temporal(TemporalType.DATE)
+  private Date dtPagamento;
 
-    @Column(nullable = false)
-    private BigDecimal valorTotal;
-    private BigDecimal valorDesconto;
+  @Column(nullable = false)
+  private BigDecimal valorTotal;
+
+  private BigDecimal valorDesconto;
+
+  @ManyToOne(targetEntity = Pessoa.class)
+  @JoinColumn(
+      name = "pessoa_id",
+      nullable = false,
+      foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_id"))
+  private Pessoa pessoa;
 
     @ManyToOne(targetEntity = Pessoa.class)
-    @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_id"))
-    private Pessoa pessoa;
+    @JoinColumn(name = "empresa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresa_id_fk"))
+    private Pessoa empresa;
 
+    public Pessoa getEmpresa() {
+        return empresa;
+    }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        ContaReceber that = (ContaReceber) o;
-        return Objects.equals(id, that.id);
+    public void setEmpresa(Pessoa empresa) {
+        this.empresa = empresa;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    ContaReceber that = (ContaReceber) o;
+    return Objects.equals(id, that.id);
+  }
 
-    public Long getId() {
-        return id;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(id);
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getDescricao() {
-        return descricao;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+  public String getDescricao() {
+    return descricao;
+  }
 
-    public StatusContaReceber getStatus() {
-        return status;
-    }
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
 
-    public void setStatus(StatusContaReceber status) {
-        this.status = status;
-    }
+  public StatusContaReceber getStatus() {
+    return status;
+  }
 
-    public Date getDtVencimennto() {
-        return dtVencimennto;
-    }
+  public void setStatus(StatusContaReceber status) {
+    this.status = status;
+  }
 
-    public void setDtVencimennto(Date dtVencimennto) {
-        this.dtVencimennto = dtVencimennto;
-    }
+  public Date getDtVencimennto() {
+    return dtVencimennto;
+  }
 
-    public Date getDtPagamento() {
-        return dtPagamento;
-    }
+  public void setDtVencimennto(Date dtVencimennto) {
+    this.dtVencimennto = dtVencimennto;
+  }
 
-    public void setDtPagamento(Date dtPagamento) {
-        this.dtPagamento = dtPagamento;
-    }
+  public Date getDtPagamento() {
+    return dtPagamento;
+  }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
+  public void setDtPagamento(Date dtPagamento) {
+    this.dtPagamento = dtPagamento;
+  }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
+  public BigDecimal getValorTotal() {
+    return valorTotal;
+  }
 
-    public BigDecimal getValorDesconto() {
-        return valorDesconto;
-    }
+  public void setValorTotal(BigDecimal valorTotal) {
+    this.valorTotal = valorTotal;
+  }
 
-    public void setValorDesconto(BigDecimal valorDesconto) {
-        this.valorDesconto = valorDesconto;
-    }
+  public BigDecimal getValorDesconto() {
+    return valorDesconto;
+  }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
+  public void setValorDesconto(BigDecimal valorDesconto) {
+    this.valorDesconto = valorDesconto;
+  }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
+  public Pessoa getPessoa() {
+    return pessoa;
+  }
+
+  public void setPessoa(Pessoa pessoa) {
+    this.pessoa = pessoa;
+  }
 }

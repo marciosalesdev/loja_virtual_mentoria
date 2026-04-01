@@ -1,29 +1,27 @@
 package mtech.dev.marciosales.loja_virtual_mentoria.enums;
 
 public enum StatusContaReceber {
+  COBRANCA("Cobrança"),
+  VENCIDA("Vencida"),
+  ABERTA("Aberta"),
+  QUITADA("Quitada");
 
-    COBRANCA("Cobrança"),
-    VENCIDA("Vencida"),
-    ABERTA("Aberta"),
-    QUITADA("Quitada");
+  StatusContaReceber(String descricao) {
+    descricao = descricao;
+  }
 
+  private String descricao;
 
-    StatusContaReceber(String descricao) {
-        descricao = descricao;
-    }
+  public String getDescricao() {
+    return descricao;
+  }
 
-    private String descricao;
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    @Override
-    public String toString() {
-        return this.getDescricao();
-    }
+  @Override
+  public String toString() {
+    return this.getDescricao();
+  }
 }
